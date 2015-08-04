@@ -6,12 +6,12 @@ Mean
 
 The [expected value](https://en.wikipedia.org/wiki/Expected_value) for a [Student t](https://en.wikipedia.org/wiki/Student t_distribution) random variable is
 
-<div class="equation" align="center" data-raw-text="\mathbb{E}\left[ X \right] = " data-equation="eq:expectation">
+<div class="equation" align="center" data-raw-text="\mathbb{E}\left[ X \right] = 0" data-equation="eq:expectation">
 	<img src="" alt="Expected value for a Student t distribution.">
 	<br>
 </div>
 
-where `v` is the degrees of freedom.
+when `v > 1`, where `v` is the degrees of freedom of the distribution. Otherwise the mean is undefined and this module returns `NaN`.
 
 
 ## Installation
@@ -123,16 +123,17 @@ var v, out;
 
 v = new Float64Array( [ 0.5,1,2,4 ] );
 
+// Beware: `NaN` is cast to `0` for integer-typed arrays!
 out = mean( v, {
 	'dtype': 'int32'
 });
-// returns Int32Array( [ NaN,NaN,0,0 ] )
+// returns Int32Array( [ 0,0,0,0 ] )
 
 // Works for plain arrays, as well...
 out = mean( [0.5,1,2,4], {
 	'dtype': 'int32'
 });
-// returns Int32Array( [ NaN,NaN,0,0 ] )
+// returns Int32Array( [ 0,0,0,0 ] )
 ```
 
 By default, the function returns a new data structure. To mutate the input data structure (e.g., when input values can be discarded or when optimizing memory usage), set the `copy` option to `false`.
@@ -175,16 +176,10 @@ bool = ( mat === out );
 
 ## Notes
 
-*	If an element is __not__ a positive number, the [expected value](https://en.wikipedia.org/wiki/Expected_value) is `NaN`.
+*	If an element is __not__ a numeric value, the [expected value](https://en.wikipedia.org/wiki/Expected_value) is `NaN`.
 
 	``` javascript
 	var v, out;
-
-	out = mean( -1 );
-	// returns NaN
-
-	out = mean( 0 );
-	// returns NaN
 
 	out = mean( null );
 	// returns NaN

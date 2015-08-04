@@ -10,7 +10,10 @@ var // Expectation library:
 	matrix = require( 'dstructs-matrix' ),
 
 	// Module to be tested:
-	mean = require( './../lib/matrix.js' );
+	mean = require( './../lib/matrix.js' ),
+
+	// Function to apply element-wise:
+	MEAN = require( './../lib/number.js' );
 
 
 // VARIABLES //
@@ -32,8 +35,8 @@ describe( 'matrix mean', function tests() {
 	d1 = new Int16Array( 25 );
 	d2 = new Int16Array( 25 );
 	for ( i = 0; i < d1.length; i++ ) {
-		d1[ i ] = i;
-		d2[ i ] = i;
+		d1[ i ] = i + 2;
+		d2[ i ] = MEAN( i + 2 );
 	}
 
 	beforeEach( function before() {

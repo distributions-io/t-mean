@@ -33,7 +33,6 @@ describe( 'deepset mean', function tests() {
 			{'x':2},
 			{'x':4}
 		];
-
 		data = mean( data, 'x' );
 		expected = [
 			{'x':NaN},

@@ -128,8 +128,8 @@ describe( 'compute-mean', function tests() {
 	});
 
 	it( 'should compute the distribution mean when provided a number', function test() {
-		assert.strictEqual( mean( 0.5 ), NaN );
-		assert.strictEqual( mean( 1  ), NaN );
+		assert.isTrue( isnan( mean( 0.5 ) ) );
+		assert.isTrue( isnan( mean( 1  ) ) );
 		assert.strictEqual( mean( 2  ), 0 );
 		assert.strictEqual( mean( 4  ), 0 );
 	});
@@ -293,8 +293,8 @@ describe( 'compute-mean', function tests() {
 		d1 = new Int16Array( 25 );
 		d2 = new Float32Array( 25 );
 		for ( i = 0; i < d1.length; i++ ) {
-			d1[ i ] = i + 1;
-			d2[ i ] = MEAN( i + 1 );
+			d1[ i ] = i + 2;
+			d2[ i ] = MEAN( i + 2 );
 		}
 		mat = matrix( d1, [5,5], 'int16' );
 		out = mean( mat, {
