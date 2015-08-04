@@ -7,7 +7,7 @@ Mean
 The [expected value](https://en.wikipedia.org/wiki/Expected_value) for a [Student t](https://en.wikipedia.org/wiki/Student t_distribution) random variable is
 
 <div class="equation" align="center" data-raw-text="\mathbb{E}\left[ X \right] = 0" data-equation="eq:expectation">
-	<img src="" alt="Expected value for a Student t distribution.">
+	<img src="https://cdn.rawgit.com/distributions-io/t-mean/e03cd4ef917da00e1d387c1803b5f050f502b494/docs/img/eqn.svg" alt="Expected value for a Student t distribution.">
 	<br>
 </div>
 
@@ -277,7 +277,7 @@ out = mean( v, {
 // Typed arrays...
 v = new Int32Array( 10 );
 for ( i = 0; i < v.length; i++ ) {
-	v[ i ] = i
+	v[ i ] = i;
 }
 out = mean( v );
 
